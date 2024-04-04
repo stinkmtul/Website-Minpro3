@@ -132,7 +132,7 @@ elseif ($_SESSION['level'] != 'user' && $_SESSION['level'] != 'admin'){
                             
                             // Tampilkan saldo hanya jika level adalah user
                             if ($_SESSION['level'] == 'user') {
-                                echo "<p><span class='fas fa-money'></span>Saldo : Rp" . $saldo . "</p>";
+                                echo "<p><span class='fas fa-money'></span>Saldo : " . $saldo . "</p>";
                             }
                         }
                     }
