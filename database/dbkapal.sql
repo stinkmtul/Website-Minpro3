@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 04, 2024 at 05:10 AM
+-- Generation Time: Apr 11, 2024 at 03:40 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -97,8 +97,8 @@ CREATE TABLE `user` (
 
 INSERT INTO `user` (`id_user`, `nama`, `username`, `password`, `level`, `saldo`) VALUES
 ('US001', 'Admin1', 'admin', '123', 'admin', 0),
-('US003', 'Siti', 'siti', '123', 'user', 100000),
-('US004', 'Siti Nikmatul Ula', 'stinkmtul', '123', 'user', 34940);
+('US003', 'Siti', 'siti', '123', 'user', 150000),
+('US005', 'Super Admin', 'superadmin', '123', 'superadmin', 0);
 
 --
 -- Indexes for dumped tables
