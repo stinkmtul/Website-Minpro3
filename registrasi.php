@@ -16,7 +16,7 @@ if (isset($_POST['simpan'])) {
 
         if ($sqlInsert) {
             echo "<script>
-            window.location.href = 'login.php';
+            window.location.href = 'index.php';
             alert('Berhasil membuat akun');
             </script>";
         } else {
@@ -125,12 +125,12 @@ if (isset($_POST['simpan'])) {
             </div>
             <div class="form-group">
                 <label>Password</label>
-                <input type="password" class="form-control" name="password" autocomplete="off" placeholder="Masukkan Password" required>
+                <input type="text" class="form-control" name="password" autocomplete="off" placeholder="Masukkan Password" required>
             </div>
             <div class="btn-container">
 				<center>
                 <button type="submit" class="btn-simpan" name="simpan">Simpan</button>
-                <a href="login.php" class="btn btn-danger">Batal</a>
+                <a href="index.php" class="btn btn-danger">Batal</a>
 				</center>
             </div>
         </form>

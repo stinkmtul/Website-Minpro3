@@ -51,7 +51,7 @@
                     <a class="nav-link" href="utama.php">Beranda</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="keloladatakapal.php">Kelola Data Kapal</a>
+                    <a class="nav-link" href="keloladatauser.php">Kelola Data User</a>
                 </li>
             </ul>
         </div>

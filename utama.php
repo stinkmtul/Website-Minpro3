@@ -1,11 +1,11 @@
 <?php include 'koneksi.php';
 session_start();
 if ($_SESSION['level'] == "") {
-	header("location:login.php");
+	header("location:index.php");
 } 
-elseif ($_SESSION['level'] != 'user' && $_SESSION['level'] != 'admin'){
+elseif ($_SESSION['level'] != 'user' && $_SESSION['level'] != 'admin' && $_SESSION['level'] != 'superadmin'){
 	echo "<script>
-	window.location.href = 'login.php';
+	window.location.href = 'index.php';
 	alert('Anda tidak memiliki akses untuk masuk kehalaman ini');
 	</script>";
 }
@@ -20,8 +20,10 @@ elseif ($_SESSION['level'] != 'user' && $_SESSION['level'] != 'admin'){
     <?php 
       if ($_SESSION['level'] == 'admin') {
         include 'navbar.php'; // Menggunakan navbar untuk admin
-      } else {
+      } elseif ($_SESSION['level'] == 'user') {
         include 'navbaruser.php'; // Menggunakan navbar untuk pengguna biasa
+      } else {
+        include 'navbarsuper.php';
       }
     ?>
     <style>
@@ -132,7 +134,7 @@ elseif ($_SESSION['level'] != 'user' && $_SESSION['level'] != 'admin'){
                             
                             // Tampilkan saldo hanya jika level adalah user
                             if ($_SESSION['level'] == 'user') {
-                                echo "<p><span class='fas fa-money'></span>Saldo : $" . $saldo . "</p>";
+                                echo "<p><span class='fas fa-money'></span>Saldo : Rp." . $saldo . "</p>";
                             }
                         }
                     }
@@ -148,8 +150,10 @@ elseif ($_SESSION['level'] != 'user' && $_SESSION['level'] != 'admin'){
                     <?php 
                         if ($_SESSION['level'] == 'user') {
                             echo '<a class="btn btn-custom" href="datatiket.php" role="button">Pesan Sekarang</a>';
-                        } else {
+                        } elseif ($_SESSION['level'] == 'admin') {
                             echo '<a class="btn btn-custom" href="keloladatakapal.php" role="button">Kelola Data Kapal</a>';
+                        } else {
+                            echo '<a class="btn btn-custom" href="keloladatauser.php" role="button">Kelola Data User</a>';
                         }
                     ?>
                     <br><br>

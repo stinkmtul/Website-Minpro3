@@ -1,11 +1,11 @@
 <?php include 'koneksi.php';
 session_start();
 if ($_SESSION['level'] == "") {
-	header("location:login.php");
+	header("location:index.php");
 } 
-elseif ($_SESSION['level'] != 'admin'){
+elseif ($_SESSION['level'] != 'superadmin'){
 	echo "<script>
-	window.location.href = 'login.php';
+	window.location.href = 'index.php';
 	alert('Anda tidak memiliki akses untuk masuk kehalaman ini');
 	</script>";
 }
@@ -83,12 +83,14 @@ elseif ($_SESSION['level'] != 'admin'){
         <div class="col-md-11" style="margin: 0 auto;">
             <h3 class="text-center my-4">Data User</h3>
             <div class="dropdown mb-3">
+            <a class="btn btn-custom bi bi-plus-circle" href="tambahdatauser.php"><b> Tambah</b></a>
                 <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
                     Pilih Level
                 </button>
                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                     <li><a class="dropdown-item" href="?level=admin">Admin</a></li>
                     <li><a class="dropdown-item" href="?level=user">User</a></li>
+                    <li><a class="dropdown-item" href="?level=superadmin">Super Admin</a></li>
                 </ul>
             </div>
             <div class="table-responsive">
@@ -99,6 +101,7 @@ elseif ($_SESSION['level'] != 'admin'){
                         <th>ID</th>
                         <th>Nama</th>
                         <th>Username</th>
+                        <th>Password</th>
                         <th>Level</th>
                         <th>Aksi</th>
                     </tr>
@@ -109,7 +112,7 @@ elseif ($_SESSION['level'] != 'admin'){
                     // Memeriksa jika level telah dipilih
                     if(isset($_GET['level'])) {
                         $level = $_GET['level'];
-                        $sql = mysqli_query($koneksi, "SELECT id_user, nama, username, level  FROM user WHERE level='$level'");
+                        $sql = mysqli_query($koneksi, "SELECT id_user, nama, username, password, level  FROM user WHERE level='$level'");
                         while ($data = mysqli_fetch_array($sql)) {
                             ?>
                             <tr>
@@ -117,6 +120,7 @@ elseif ($_SESSION['level'] != 'admin'){
                                 <td><?php echo $data['id_user'] ?></td>
                                 <td><?php echo $data['nama'] ?></td>
                                 <td><?php echo $data['username'] ?></td>
+                                <td><?php echo $data['password'] ?></td>
                                 <td><?php echo $data['level'] ?></td>
                                 <td>
                                     <a href="hapusdatauser.php?id=<?php echo $data['id_user'] ?>" class="btn btn-danger bi bi-trash" onclick="return confirm('Anda tidak akan bisa melihat data ini lagi yakin ingin menghapus?');"></a>

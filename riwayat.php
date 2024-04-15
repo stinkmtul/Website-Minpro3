@@ -1,11 +1,11 @@
 <?php include 'koneksi.php';
 session_start();
 if ($_SESSION['level'] == "") {
-	header("location:login.php");
+	header("location:index.php");
 } 
 elseif ($_SESSION['level'] != 'user'){
 	echo "<script>
-	window.location.href = 'login.php';
+	window.location.href = 'index.php';
 	alert('Anda tidak memiliki akses untuk masuk kehalaman ini');
 	</script>";
 }
