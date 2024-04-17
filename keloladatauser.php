@@ -76,7 +76,7 @@ elseif ($_SESSION['level'] != 'superadmin'){
     </style>
 </head>
 <body>
-<?php include 'navbar.php' ?>
+<?php include 'navbarsuper.php' ?>
 <br><br><br><br>
 <div class="container">
     <div class="row">
